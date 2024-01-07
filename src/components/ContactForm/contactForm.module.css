@@ -1,0 +1,25 @@
+.formLabel{
+    margin: 10px 0 10px 40px;
+}
+
+
+
+.wrapper{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: rgb(228, 226, 226);
+}
+
+.name{
+    width: 50%;
+    margin-left: 40px;
+}
+
+.btn{
+    margin: 10px 40px;
+    width: fit-content;
+    padding: 5px 10px;
+    align-items: center;
+}
