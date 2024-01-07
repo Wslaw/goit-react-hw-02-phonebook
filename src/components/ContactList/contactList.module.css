@@ -1,0 +1,38 @@
+.formLabel {
+    font-size: 16px;
+    font-family:'Courier New', Courier, monospace;
+  margin: 10px 0 5px 40px;
+}
+
+.wrapper {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  background-color: rgb(228, 226, 226);
+}
+
+.input {
+  width: 50%;
+  margin-left: 40px;
+}
+.input::placeholder{
+        font-family: 'Courier New', Courier, monospace;
+
+}
+
+.btn {
+        font-family: 'Courier New', Courier, monospace;
+
+  margin: 10px 40px;
+  width: fit-content;
+  padding: 5px 10px;
+  align-items: center;
+  border: 1px solid #a2a2a2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(146, 152, 162);
+    color: aliceblue;
+}
