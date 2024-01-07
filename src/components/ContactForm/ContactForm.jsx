@@ -7,13 +7,22 @@ class ContactForm extends Component{
    nameId = nanoid();
    numberId = nanoid();
   
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // Коли відбувається handleSubmit нам треба витягти дані з форми
+    const { elements } = e.currentTarget;
+
+    console.log(e.currentTarget);
+    console.log(e.target);
+  }
+  
   render() {
-    const { nameId, numberId } = this;
+    const { nameId, numberId, handleSubmit } = this;
     return (
-      <div className={styles.wrap}>
+      <div className={styles.wrapper}>
         <h2 className={styles.title}>Phonebook</h2>
-        <form className={styles.form}>
-          <div className={styles.wrapper}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.wrap}>
             <label htmlFor={nameId} className={styles.formLabel}>
               Name
             </label>
@@ -22,9 +31,9 @@ class ContactForm extends Component{
               className={styles.input}
               type="text"
               name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
+              // required
               placeholder="Enter your Name."
             />
             <label htmlFor={numberId} className={styles.formLabel}>
@@ -35,9 +44,9 @@ class ContactForm extends Component{
               className={styles.input}
               type="tel"
               name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
+              // required
               placeholder="Enter your contact"
             />
             <button type="submit" className={styles.btn}>
@@ -45,8 +54,6 @@ class ContactForm extends Component{
             </button>
           </div>
         </form>
-        
-        <h2 className={styles.title}>Contacts</h2>
       </div>
     );
   }

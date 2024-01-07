@@ -4,12 +4,11 @@ import styles from './ContactForm/contactForm.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from "./ContactList/ContactList";
 
-
 export const App = () => {
   return (
     <div className={styles.App}>     
       <ContactForm />
-      {/* <ContactList /> */}
+      <ContactList />
     </div>
   );
 };
