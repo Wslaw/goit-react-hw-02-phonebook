@@ -14,6 +14,7 @@ class ContactForm extends Component{
 
     console.log(e.currentTarget);
     console.log(e.target);
+    console.log(elements)
   }
   
   render() {
