@@ -11,29 +11,28 @@ class Phonebook extends Component {
     number: '',
   };
 
-    isDublicate({ name, number }) {
-        const { contacts } = this.state;
-        const normalizedName = name.toLowerCase();
-        const normalizedNumber = number.toLowerCase();
+  isDublicate({ name, number }) {
+    const { contacts } = this.state;
+    const normalizedName = name.toLowerCase();
+    const normalizedNumber = number.toLowerCase();
 
-        const dublicate = contacts.find(item => {
-          const normalizedCurrentName = item.name.toLowerCase();
-          const normalizedCurrentNumber = item.number.toLowerCase();
+    const dublicate = contacts.find(item => {
+      const normalizedCurrentName = item.name.toLowerCase();
+      const normalizedCurrentNumber = item.number.toLowerCase();
 
-          return (
-            normalizedCurrentName === normalizedName &&
-            normalizedCurrentNumber === normalizedNumber
-          );
-        })
-        return Boolean(dublicate);
+      return (
+        normalizedCurrentName === normalizedName &&
+        normalizedCurrentNumber === normalizedNumber
+      );
+    });
+    return Boolean(dublicate);
+  }
+  addContact = data => {
+    if (this.isDublicate(data)) {
+      return alert(
+        `This contact ${data.name}: ${data.number} is already in the book`
+      );
     }
-    addContact = data => {
-        //   console.log(data)
-        // const { name, number } = data;
-        
-        if (this.isDublicate(data)) {
-            return alert(`This contact ${data.name}: ${data.number} is already in the book`);
-        }
 
     this.setState(({ contacts }) => {
       const newContact = {
@@ -45,14 +44,24 @@ class Phonebook extends Component {
     });
   };
 
+  deleteContact = id => {
+    this.setState(({ contacts }) => {
+      const newContact = contacts.filter(item => item.id !== id);
+
+      return {
+        contacts: newContact,
+      };
+    });
+  };
+
   render() {
     const { contacts } = this.state;
-    const { addContact } = this;
+    const { addContact, deleteContact } = this;
 
     return (
       <div>
         <ContactForm onSubmit={addContact} />
-        <ContactList items={contacts} />
+        <ContactList items={contacts} deleteContact={deleteContact} />
       </div>
     );
   }

@@ -60,6 +60,21 @@ flex-direction: column;
   color: aliceblue;
 }
 
+.btnDelete {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  margin-left: 10px;
+  /* width: fit-content; */
+  padding: 2px 2px;
+  /* align-items: center; */
+  border: 1px solid #a2a2a2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btnDelete:hover {
+  background-color: rgb(146, 152, 162);
+  color: aliceblue;
+}
 
 .customList {
 List-style-type: none;
