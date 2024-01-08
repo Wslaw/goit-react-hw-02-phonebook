@@ -6,20 +6,43 @@ import ContactList from './ContactList/ContactList';
 
 class Phonebook extends Component {
   state = {
-      contacts: [      
-      ],
+    contacts: [],
+    name: '',
+    number: '',
   };
 
-    addContact = data => {
-      
-        this.setState(({ contacts }) => {
-            const newContacts = {
-                id: nanoid(),
-                ...data,
-            };
+    isDublicate({ name, number }) {
+        const { contacts } = this.state;
+        const normalizedName = name.toLowerCase();
+        const normalizedNumber = number.toLowerCase();
 
-            return { contacts: [...contacts, newContacts] };
-        });
+        const dublicate = contacts.find(item => {
+          const normalizedCurrentName = item.name.toLowerCase();
+          const normalizedCurrentNumber = item.number.toLowerCase();
+
+          return (
+            normalizedCurrentName === normalizedName &&
+            normalizedCurrentNumber === normalizedNumber
+          );
+        })
+        return Boolean(dublicate);
+    }
+    addContact = data => {
+        //   console.log(data)
+        // const { name, number } = data;
+        
+        if (this.isDublicate(data)) {
+            return alert(`This contact ${data.name}: ${data.number} is already in the book`);
+        }
+
+    this.setState(({ contacts }) => {
+      const newContact = {
+        id: nanoid(),
+        ...data,
+      };
+
+      return { contacts: [...contacts, newContact] };
+    });
   };
 
   render() {
