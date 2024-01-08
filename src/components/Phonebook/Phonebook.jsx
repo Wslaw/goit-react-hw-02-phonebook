@@ -67,7 +67,11 @@ class Phonebook extends Component {
   };
 
   getFlteredContacts() {
-    const { filter, contacts } = this.state;
+      const { filter, contacts } = this.state;
+      
+      if (!filter) {
+          return contacts;
+      }
     const normalizedFilter = filter.toLocaleLowerCase();
 
     const filteredContacts = contacts.filter(({ name, number }) => {
