@@ -20,11 +20,12 @@ class ContactForm extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(name);
+    // console.log(name);
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.onSubmit({ ...this.state });
     // Коли відбувається handleSubmit нам треба витягти дані з форми
     // const { elements } = e.currentTarget;  
     this.reset();
