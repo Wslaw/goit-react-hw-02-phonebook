@@ -1,14 +1,20 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-// import styles from './phonebook.module.css';
+import styles from './phonebook.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 
 class Phonebook extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     name: '',
     number: '',
+    filter: '',
   };
 
   isDublicate({ name, number }) {
@@ -54,14 +60,49 @@ class Phonebook extends Component {
     });
   };
 
+  changeFilter = ({ target }) => {
+    this.setState({
+      filter: target.value,
+    });
+  };
+
+  getFlteredContacts() {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLocaleLowerCase();
+
+    const filteredContacts = contacts.filter(({ name, number }) => {
+      const normalizedName = name.toLocaleLowerCase();
+      const normalizedNumber = number.toLocaleLowerCase();
+
+      return (
+        normalizedNumber.includes(normalizedFilter) ||
+        normalizedName.includes(normalizedFilter)
+      );
+    });
+
+    return filteredContacts;
+  }
+
   render() {
-    const { contacts } = this.state;
-    const { addContact, deleteContact } = this;
+    // const { contacts } = this.state;
+    const { addContact, deleteContact, changeFilter } = this;
+    const contacts = this.getFlteredContacts();
 
     return (
-      <div>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Phonebook</h1>
         <ContactForm onSubmit={addContact} />
-        <ContactList items={contacts} deleteContact={deleteContact} />
+        <div >
+          <h2 className={styles.title}>Contacts</h2>
+          <p className={styles.text}>Find contacts by name</p>
+          <input
+            onChange={changeFilter}
+            name="filter"
+            placeholder="Search"
+            type="text"
+          />
+          <ContactList items={contacts} deleteContact={deleteContact} />
+        </div>
       </div>
     );
   }
