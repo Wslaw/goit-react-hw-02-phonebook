@@ -70,6 +70,7 @@ class ContactForm extends Component {
               className={styles.input}
               type="tel"
               name="number"
+              pattern="[0-9\+\-]*"
               // pattern="\\+?\\d{1,4}?[-.\\s]?\\(\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}"
               // pattern="\\+?\\d{1,4}?[-.\\s]?\\(\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}"
               // pattern="/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/"
