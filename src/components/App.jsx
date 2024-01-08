@@ -5,6 +5,9 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from "./ContactList/ContactList";
 
 export const App = () => {
+  // state = {
+    
+  // }
   return (
     <div className={styles.App}>     
       <ContactForm />

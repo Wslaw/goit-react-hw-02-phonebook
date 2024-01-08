@@ -4,7 +4,7 @@ import styles from './contactList.module.css';
 // import { nanoid } from 'nanoid';
 const ContactList = ({items}) => {
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.container}>
         <h2 className={styles.title}>Contacts</h2>
         <ol className={styles.customList}>
           <li>Name-1</li>

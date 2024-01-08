@@ -7,7 +7,7 @@
     font-size: 18px;
     color: #010101;
 } */
-.wrapper{
+.container{
   width: 350px;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-.wrap{
+.wrapper{
     display: flex;
 flex-direction: column;    
 }

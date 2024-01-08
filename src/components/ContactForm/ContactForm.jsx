@@ -5,29 +5,44 @@ import { nanoid } from 'nanoid';
 
 class ContactForm extends Component{
    nameId = nanoid();
-   numberId = nanoid();
+  numberId = nanoid();
+  
+  state = {
+    // contacts:[],
+    name: "",
+    number:''
+  }
+
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]:value
+    })
+  console.log(name)
+  }
   
   handleSubmit = (e) => {
     e.preventDefault();
     // Коли відбувається handleSubmit нам треба витягти дані з форми
-    const { elements } = e.currentTarget;
-
-    console.log(e.currentTarget);
-    console.log(e.target);
-    console.log(elements)
+    // const { elements } = e.currentTarget;
+console.log(this.state)
+    // console.log(e.currentTarget);
+    // console.log(e.target);
+    // console.log(elements)
   }
   
   render() {
-    const { nameId, numberId, handleSubmit } = this;
+    const { nameId, numberId, handleSubmit, handleChange } = this;
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.container}>
         <h2 className={styles.title}>Phonebook</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.wrap}>
+          <div className={styles.wrapper}>
             <label htmlFor={nameId} className={styles.formLabel}>
               Name
             </label>
             <input
+              onChange={handleChange}
               id={nameId}
               className={styles.input}
               type="text"
@@ -41,6 +56,7 @@ class ContactForm extends Component{
               Number
             </label>
             <input
+              onChange={handleChange}
               id={numberId}
               className={styles.input}
               type="tel"
