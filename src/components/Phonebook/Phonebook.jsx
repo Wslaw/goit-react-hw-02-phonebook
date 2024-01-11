@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import styles from './phonebook.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
+import WallImage from "../images/wall.jpg"
 
 class Phonebook extends Component {
   state = {
@@ -93,10 +94,14 @@ class Phonebook extends Component {
     const contacts = this.getFlteredContacts();
 
     return (
-      <div className={styles.container}>
+      <div
+      className={styles.body}
+      style={{ backgroundImage: `url(${WallImage})` }}
+      >
+        <div className={styles.container}>
         <h1 className={styles.title}>Phonebook</h1>
         <ContactForm onSubmit={addContact} />
-        <div >
+        <div>
           <h2 className={styles.title}>Contacts</h2>
           <p className={styles.text}>Find contacts by name</p>
           <input
@@ -107,7 +112,8 @@ class Phonebook extends Component {
           />
           <ContactList items={contacts} deleteContact={deleteContact} />
         </div>
-      </div>
+        </div>
+        </div>
     );
   }
 }
